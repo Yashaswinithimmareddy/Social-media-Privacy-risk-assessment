@@ -1,0 +1,1057 @@
+{
+  "assessment": {
+    "assessment_id": "PRA-716E41E0",
+    "created_at": "2026-10-05T11:53:59.377884+00:00",
+    "overall_score": 90.3,
+    "risk_level": "CRITICAL",
+    "category_scores": {
+      "CAT_A": {
+        "category_id": "CAT_A",
+        "name": "Profile Visibility",
+        "score": 95.0,
+        "weight": 0.1,
+        "risk_level": "CRITICAL",
+        "description": "Evaluates account discoverability, search engine indexing, and friend list exposure."
+      },
+      "CAT_B": {
+        "category_id": "CAT_B",
+        "name": "Personal Information",
+        "score": 76.0,
+        "weight": 0.15,
+        "risk_level": "CRITICAL",
+        "description": "Assesses public visibility of contact details, birth date, home, and family info."
+      },
+      "CAT_C": {
+        "category_id": "CAT_C",
+        "name": "Location Privacy",
+        "score": 96.0,
+        "weight": 0.15,
+        "risk_level": "CRITICAL",
+        "description": "Analyzes live location broadcasts, check-ins, travel itinerary exposure, and GPS geotags."
+      },
+      "CAT_D": {
+        "category_id": "CAT_D",
+        "name": "Posts & Content",
+        "score": 95.0,
+        "weight": 0.1,
+        "risk_level": "CRITICAL",
+        "description": "Measures post audience defaults, sensitive workplace document leaks, and personal oversharing."
+      },
+      "CAT_E": {
+        "category_id": "CAT_E",
+        "name": "Friends & Followers",
+        "score": 87.5,
+        "weight": 0.1,
+        "risk_level": "CRITICAL",
+        "description": "Evaluates handling of stranger requests, follower audits, and audience segmentations."
+      },
+      "CAT_F": {
+        "category_id": "CAT_F",
+        "name": "Tagging & Mentions",
+        "score": 85.0,
+        "weight": 0.05,
+        "risk_level": "CRITICAL",
+        "description": "Assesses tagging approvals, facial recognition suggestions, and public mention permissions."
+      },
+      "CAT_G": {
+        "category_id": "CAT_G",
+        "name": "Authentication & Account Security",
+        "score": 92.0,
+        "weight": 0.15,
+        "risk_level": "CRITICAL",
+        "description": "Reviews multi-factor authentication (MFA), password hygiene, login alerts, and active sessions."
+      },
+      "CAT_H": {
+        "category_id": "CAT_H",
+        "name": "Third-Party Apps",
+        "score": 95.0,
+        "weight": 0.05,
+        "risk_level": "CRITICAL",
+        "description": "Measures OAuth permissions, connected legacy apps, social logins, and viral quiz access."
+      },
+      "CAT_I": {
+        "category_id": "CAT_I",
+        "name": "Messaging & Social Engineering",
+        "score": 97.5,
+        "weight": 0.1,
+        "risk_level": "CRITICAL",
+        "description": "Assesses phishing awareness, OTP/verification code hygiene, impersonation vigilance, and scam DM interaction."
+      },
+      "CAT_J": {
+        "category_id": "CAT_J",
+        "name": "Digital Footprint",
+        "score": 84.0,
+        "weight": 0.05,
+        "risk_level": "CRITICAL",
+        "description": "Evaluates historical post cleanup, abandoned account posture, username correlation, and privacy audits."
+      }
+    },
+    "findings": [
+      {
+        "finding_id": "FIND_PHONE_PUBLIC",
+        "category": "CAT_B",
+        "severity": "CRITICAL",
+        "title": "Mobile Phone Number Publicly Visible",
+        "description": "Your phone number is reported as publicly viewable on your profile or bio.",
+        "technical_impact": "Direct vector for SIM-swapping, SMS phishing (smishing), unauthorized WhatsApp re-registration, and reverse lookups in leaked breaches."
+      },
+      {
+        "finding_id": "FIND_BIRTHDAY_PUBLIC",
+        "category": "CAT_B",
+        "severity": "CRITICAL",
+        "title": "Full Birth Date (Day, Month, Year) Exposed",
+        "description": "You reported displaying your complete birth date on your profile.",
+        "technical_impact": "Full birth dates form a cornerstone of identity theft, credit bureau impersonation, and answering security questions for banking or healthcare accounts."
+      },
+      {
+        "finding_id": "FIND_HOME_ADDRESS",
+        "category": "CAT_B",
+        "severity": "CRITICAL",
+        "title": "Home Address or Exact Residential Neighborhood Disclosed",
+        "description": "Granular residential location details are visible on your profile.",
+        "technical_impact": "Destroys physical privacy, exposing the user to physical reconnaissance, harassment, and property record correlation."
+      },
+      {
+        "finding_id": "FIND_MFA_DISABLED",
+        "category": "CAT_G",
+        "severity": "CRITICAL",
+        "title": "Multi-Factor Authentication (MFA) Disabled",
+        "description": "Your account relies solely on single-factor password authentication.",
+        "technical_impact": "Single-factor accounts have zero defense against credential stuffing or data breaches leaking password hashes."
+      },
+      {
+        "finding_id": "FIND_REALTIME_LOCATION",
+        "category": "CAT_C",
+        "severity": "CRITICAL",
+        "title": "Real-Time Location Broadcasts Enabled",
+        "description": "You broadcast real-time location stamps or live geolocation feeds.",
+        "technical_impact": "Allows real-world physical tracking, reveals exact coordinates in real-time, and confirms absence from your primary residence."
+      },
+      {
+        "finding_id": "FIND_SENSITIVE_DOCS",
+        "category": "CAT_D",
+        "severity": "CRITICAL",
+        "title": "Boarding Passes, Badges, or Work Desks Photographed",
+        "description": "Photos show corporate badges, flight booking barcodes, or workstation monitors.",
+        "technical_impact": "Barcodes leak PNRs and passport numbers; visible monitors leak internal company applications or credentials."
+      },
+      {
+        "finding_id": "FIND_SUSPICIOUS_LINK_RISK",
+        "category": "CAT_I",
+        "severity": "CRITICAL",
+        "title": "High Vulnerability to Urgency-Based Phishing DMs",
+        "description": "Likely to click unexpected links sent via DMs with sensational claims.",
+        "technical_impact": "Directly vulnerable to credential harvesting phishing kits, session hijacking, or browser malware."
+      },
+      {
+        "finding_id": "FIND_OTP_SHARING_RISK",
+        "category": "CAT_I",
+        "severity": "CRITICAL",
+        "title": "Risk of Disclosing MFA Verification Codes Upon Request",
+        "description": "Willingness to forward temporary verification codes sent to your phone or email.",
+        "technical_impact": "Guarantees complete account takeover when an attacker initiates an automated password reset."
+      },
+      {
+        "finding_id": "FIND_PASSWORD_REUSE",
+        "category": "CAT_G",
+        "severity": "HIGH",
+        "title": "Password Reuse or Predictable Variations Reported",
+        "description": "The password used for this social account is shared or slightly modified from other websites.",
+        "technical_impact": "A breach at any unrelated third-party website gives automated bots direct access to hijack this account."
+      },
+      {
+        "finding_id": "FIND_INSTANT_CHECKINS",
+        "category": "CAT_C",
+        "severity": "HIGH",
+        "title": "Immediate Venue Check-ins Published While Present",
+        "description": "You publish check-ins at public venues while still physically located at the establishment.",
+        "technical_impact": "Broadcasts exact physical whereabouts to any observer before you can safely depart."
+      },
+      {
+        "finding_id": "FIND_ADVANCE_TRAVEL_PLANS",
+        "category": "CAT_C",
+        "severity": "HIGH",
+        "title": "Upcoming Travel Plans and Vacations Announced in Advance",
+        "description": "Travel dates, airport itineraries, or vacation countdowns are shared publicly prior to trip conclusion.",
+        "technical_impact": "Signals to threat actors and local burglars exactly when your home will be unoccupied."
+      },
+      {
+        "finding_id": "FIND_ROUTINE_TRACKING",
+        "category": "CAT_C",
+        "severity": "HIGH",
+        "title": "Predictable Daily Routines and Routes Exposed",
+        "description": "Daily workout routes, recurring gym schedules, or commute paths are frequently posted.",
+        "technical_impact": "Enables pattern-of-life analysis and predictable physical interception opportunities."
+      },
+      {
+        "finding_id": "FIND_PROFILE_PUBLIC",
+        "category": "CAT_A",
+        "severity": "HIGH",
+        "title": "Account Fully Publicly Accessible",
+        "description": "Your entire profile and timeline are accessible to any anonymous internet user.",
+        "technical_impact": "Greatly expands passive OSINT reconnaissance surface area and indexing by third-party identity search engines."
+      },
+      {
+        "finding_id": "FIND_FRIENDS_LIST_PUBLIC",
+        "category": "CAT_A",
+        "severity": "HIGH",
+        "title": "Friends and Followers List Publicly Exposed",
+        "description": "Anyone can view and scrape your complete list of personal and professional connections.",
+        "technical_impact": "Attackers can map your trust network to launch high-fidelity social engineering against your contacts."
+      },
+      {
+        "finding_id": "FIND_TAG_REVIEW_OFF",
+        "category": "CAT_F",
+        "severity": "HIGH",
+        "title": "Tag Review and Approval Disabled",
+        "description": "Tagged posts, photos, and check-ins appear automatically on your timeline without prior consent.",
+        "technical_impact": "Third parties can expose your private whereabouts, acquaintances, or sensitive activities without your consent."
+      },
+      {
+        "finding_id": "FIND_UNKNOWN_CONNECTIONS",
+        "category": "CAT_E",
+        "severity": "HIGH",
+        "title": "Connection Requests from Unverified Strangers Accepted",
+        "description": "You report accepting friend or follow requests from unfamiliar profiles with no known connection.",
+        "technical_impact": "Allows adversary sockpuppet accounts inside your 'Friends-Only' privacy perimeter."
+      },
+      {
+        "finding_id": "FIND_POSTS_DEFAULT_PUBLIC",
+        "category": "CAT_D",
+        "severity": "HIGH",
+        "title": "Default Post Audience Set to Public",
+        "description": "All future posts are broadcast publicly unless manually restricted during authoring.",
+        "technical_impact": "High rate of accidental personal data exposure due to default open visibility."
+      },
+      {
+        "finding_id": "FIND_SECURITY_ANSWER_LEAKS",
+        "category": "CAT_D",
+        "severity": "HIGH",
+        "title": "Participation in Viral Nostalgia / Security-Question Trends",
+        "description": "Participated in viral questionnaire posts (e.g. first car, childhood street, pet name).",
+        "technical_impact": "Publicly reveals common password reset security question answers to OSINT investigators."
+      },
+      {
+        "finding_id": "FIND_THIRD_PARTY_UNREVIEWED",
+        "category": "CAT_H",
+        "severity": "HIGH",
+        "title": "Third-Party App Access Tokens Never Audited",
+        "description": "No periodic revocation of connected third-party OAuth apps and integrations.",
+        "technical_impact": "Dormant third-party apps retain API permissions to read profile data, inbox, or contact graphs."
+      },
+      {
+        "finding_id": "FIND_OVERPRIVILEGED_APPS",
+        "category": "CAT_H",
+        "severity": "HIGH",
+        "title": "Third-Party Apps Granted Broad or Unverified Permissions",
+        "description": "External apps hold permissions to read private messages, friend lists, or publish posts.",
+        "technical_impact": "Supply chain compromise of any connected app exposes private social media account assets."
+      },
+      {
+        "finding_id": "FIND_ABANDONED_ACCOUNTS",
+        "category": "CAT_J",
+        "severity": "HIGH",
+        "title": "Dormant / Abandoned Social Accounts Left Online",
+        "description": "Old social accounts with forgotten passwords remain active on legacy platforms.",
+        "technical_impact": "Dormant accounts are easy targets for silent takeover and reputation poisoning."
+      },
+      {
+        "finding_id": "FIND_FAMILY_PUBLIC",
+        "category": "CAT_B",
+        "severity": "MEDIUM",
+        "title": "Family Relationships & Dependents Explicitly Mapped",
+        "description": "Family members and relationship links are publicly tagged.",
+        "technical_impact": "Provides threat actors with mother's maiden names, siblings' names, and family context exploited in emergency caller/bail scams."
+      },
+      {
+        "finding_id": "FIND_LOGIN_ALERTS_OFF",
+        "category": "CAT_G",
+        "severity": "MEDIUM",
+        "title": "Unrecognized Login Alerts Disabled or Unconfirmed",
+        "description": "Real-time notifications for unrecognized logins from new devices or unknown locations are not verified.",
+        "technical_impact": "Compromised accounts can be accessed and controlled without immediate defender detection."
+      },
+      {
+        "finding_id": "FIND_STALE_SESSIONS",
+        "category": "CAT_G",
+        "severity": "MEDIUM",
+        "title": "Active Logged-In Sessions Rarely or Never Audited",
+        "description": "No routine review of active session tokens across old phones, workstations, or borrowed computers.",
+        "technical_impact": "Persistent session cookies remain valid for months, allowing physical or token-theft hijacking."
+      },
+      {
+        "finding_id": "FIND_EXIF_GEOTAGGING",
+        "category": "CAT_C",
+        "severity": "MEDIUM",
+        "title": "Camera GPS Geotagging Enabled on Photos",
+        "description": "Photos may retain embedded EXIF GPS coordinates when captured or exported.",
+        "technical_impact": "If uploaded to uncompressed platforms or shared directly, high-resolution EXIF coordinates reveal home and work locations."
+      },
+      {
+        "finding_id": "FIND_SEARCH_INDEXING",
+        "category": "CAT_A",
+        "severity": "MEDIUM",
+        "title": "Profile Indexed by External Search Engines",
+        "description": "Public search engines (Google, Bing) cache and index your profile link and summary.",
+        "technical_impact": "Historical records and snippet caches remain searchable even if post privacy is later tightened."
+      },
+      {
+        "finding_id": "FIND_UNRESTRICTED_TAGGING",
+        "category": "CAT_F",
+        "severity": "MEDIUM",
+        "title": "Unrestricted Tagging Permissions",
+        "description": "Anyone on the platform is permitted to tag you in posts or images.",
+        "technical_impact": "Exposes your account to tag-spam campaigns, crypto scam promotions, and unsolicited association."
+      },
+      {
+        "finding_id": "FIND_OLD_POSTS_UNAUDITED",
+        "category": "CAT_J",
+        "severity": "MEDIUM",
+        "title": "Years of Historical Public Posts Left Unaudited",
+        "description": "Past posts from 3+ years ago remain publicly searchable without archiving.",
+        "technical_impact": "Historical posts provide extensive personal timeline context used in credential recovery and profiling."
+      },
+      {
+        "finding_id": "FIND_HANDLE_REUSE",
+        "category": "CAT_J",
+        "severity": "MEDIUM",
+        "title": "Identical Handle Reused Across All Platforms",
+        "description": "The exact same username is used across social, gaming, forums, and professional networks.",
+        "technical_impact": "Allows rapid cross-platform correlation using automated OSINT recon scripts (e.g. Sherlock)."
+      },
+      {
+        "finding_id": "FIND_NO_CONNECTION_AUDIT",
+        "category": "CAT_E",
+        "severity": "LOW",
+        "title": "Stale Connections Never Audited",
+        "description": "No routine review of existing connections or removal of dormant/compromised accounts.",
+        "technical_impact": "Hacked legacy accounts among friends remain inside your trusted network."
+      }
+    ],
+    "findings_count": 30,
+    "recommendations": [
+      {
+        "recommendation_id": "REC_FIND_PHONE_PUBLIC",
+        "finding_id": "FIND_PHONE_PUBLIC",
+        "finding_title": "Mobile Phone Number Publicly Visible",
+        "category": "CAT_B",
+        "priority": "IMMEDIATE",
+        "action": "Remove or strictly hide your mobile phone number from all public profiles.",
+        "step_by_step": "Navigate to Account Settings -> Personal Information -> Contact Info -> Set Phone Visibility to 'Only Me' or remove it from public display.",
+        "risk_reduction_impact": "High (Protects against SIM swapping, smishing, and identity correlation)"
+      },
+      {
+        "recommendation_id": "REC_FIND_BIRTHDAY_PUBLIC",
+        "finding_id": "FIND_BIRTHDAY_PUBLIC",
+        "finding_title": "Full Birth Date (Day, Month, Year) Exposed",
+        "category": "CAT_B",
+        "priority": "IMMEDIATE",
+        "action": "Hide your birth year or privatize your full date of birth completely.",
+        "step_by_step": "Go to Edit Profile -> Basic Info -> Birthday -> Toggle Birth Year to 'Only Me' or hide the entire date.",
+        "risk_reduction_impact": "High (Eliminates a primary data point used in financial identity theft and account resets)"
+      },
+      {
+        "recommendation_id": "REC_FIND_HOME_ADDRESS",
+        "finding_id": "FIND_HOME_ADDRESS",
+        "finding_title": "Home Address or Exact Residential Neighborhood Disclosed",
+        "category": "CAT_B",
+        "priority": "IMMEDIATE",
+        "action": "Remove residential street address, apartment number, or specific neighborhood from your bio.",
+        "step_by_step": "Edit Profile -> Places Lived -> Remove specific residential entries or set to general region only.",
+        "risk_reduction_impact": "High (Preserves physical home safety and prevents stalking)"
+      },
+      {
+        "recommendation_id": "REC_FIND_MFA_DISABLED",
+        "finding_id": "FIND_MFA_DISABLED",
+        "finding_title": "Multi-Factor Authentication (MFA) Disabled",
+        "category": "CAT_G",
+        "priority": "IMMEDIATE",
+        "action": "Enable Multi-Factor Authentication (MFA) immediately using a mobile authenticator app.",
+        "step_by_step": "Go to Settings -> Security & Login -> Two-Factor Authentication -> Choose 'Authentication App' (e.g. Google Authenticator, Bitwarden, or 1Password) and save backup codes.",
+        "risk_reduction_impact": "Critical (Blocks over 90% of automated credential stuffing attacks)"
+      },
+      {
+        "recommendation_id": "REC_FIND_REALTIME_LOCATION",
+        "finding_id": "FIND_REALTIME_LOCATION",
+        "finding_title": "Real-Time Location Broadcasts Enabled",
+        "category": "CAT_C",
+        "priority": "IMMEDIATE",
+        "action": "Disable real-time location sharing and avoid live venue updates.",
+        "step_by_step": "Turn off device-level location access for the social media app in Phone Settings -> Privacy -> Location Services. Stop broadcasting live stories.",
+        "risk_reduction_impact": "High (Eliminates physical surveillance and home vacancy signaling)"
+      },
+      {
+        "recommendation_id": "REC_FIND_SENSITIVE_DOCS",
+        "finding_id": "FIND_SENSITIVE_DOCS",
+        "finding_title": "Boarding Passes, Badges, or Work Desks Photographed",
+        "category": "CAT_D",
+        "priority": "IMMEDIATE",
+        "action": "Review and delete photos showing boarding passes, ID badges, or workplace computer screens.",
+        "step_by_step": "Search your photo timeline for travel and work photos. Delete or archive posts with visible barcodes, badges, or monitors.",
+        "risk_reduction_impact": "Critical (Prevents airline record hijacking and corporate espionage)"
+      },
+      {
+        "recommendation_id": "REC_FIND_OTP_SHARING_RISK",
+        "finding_id": "FIND_OTP_SHARING_RISK",
+        "finding_title": "Risk of Disclosing MFA Verification Codes Upon Request",
+        "category": "CAT_I",
+        "priority": "IMMEDIATE",
+        "action": "Never disclose one-time passwords (OTPs) or verification codes to anyone under any condition.",
+        "step_by_step": "Remember: Platform staff, friends, or family will NEVER legitimately ask for your 6-digit MFA code. Any request is a direct takeover attempt.",
+        "risk_reduction_impact": "Critical (Prevents direct session and account takeover)"
+      },
+      {
+        "recommendation_id": "REC_FIND_PASSWORD_REUSE",
+        "finding_id": "FIND_PASSWORD_REUSE",
+        "finding_title": "Password Reuse or Predictable Variations Reported",
+        "category": "CAT_G",
+        "priority": "IMMEDIATE",
+        "action": "Change your password to a unique 16+ character passphrase managed by a password manager.",
+        "step_by_step": "Use an encrypted password manager to generate a unique random password. Change it immediately under Security Settings.",
+        "risk_reduction_impact": "Critical (Shields account from credential stuffing attacks caused by third-party data breaches)"
+      },
+      {
+        "recommendation_id": "REC_FIND_SUSPICIOUS_LINK_RISK",
+        "finding_id": "FIND_SUSPICIOUS_LINK_RISK",
+        "finding_title": "High Vulnerability to Urgency-Based Phishing DMs",
+        "category": "CAT_I",
+        "priority": "IMPORTANT",
+        "action": "Treat unexpected links in direct messages with extreme suspicion.",
+        "step_by_step": "Never click sensationalized DM links. Confirm with the sender through an alternate channel (phone call or text).",
+        "risk_reduction_impact": "High (Prevents drive-by credential harvesting and malware infection)"
+      },
+      {
+        "recommendation_id": "REC_FIND_INSTANT_CHECKINS",
+        "finding_id": "FIND_INSTANT_CHECKINS",
+        "finding_title": "Immediate Venue Check-ins Published While Present",
+        "category": "CAT_C",
+        "priority": "IMPORTANT",
+        "action": "Wait until departing a restaurant or venue before checking in.",
+        "step_by_step": "Check-ins posted in real-time pinpoint your exact seat or table. Post retroactively.",
+        "risk_reduction_impact": "Moderate (Enhances physical security)"
+      },
+      {
+        "recommendation_id": "REC_FIND_ADVANCE_TRAVEL_PLANS",
+        "finding_id": "FIND_ADVANCE_TRAVEL_PLANS",
+        "finding_title": "Upcoming Travel Plans and Vacations Announced in Advance",
+        "category": "CAT_C",
+        "priority": "IMPORTANT",
+        "action": "Adopt delayed vacation posting: share trip highlights only after returning home.",
+        "step_by_step": "Store photos locally during travel. Publish albums and stories after you are back in your residence.",
+        "risk_reduction_impact": "Moderate (Eliminates vacant home exploitation)"
+      },
+      {
+        "recommendation_id": "REC_FIND_PROFILE_PUBLIC",
+        "finding_id": "FIND_PROFILE_PUBLIC",
+        "finding_title": "Account Fully Publicly Accessible",
+        "category": "CAT_A",
+        "priority": "IMPORTANT",
+        "action": "Consider restricting default profile visibility or enabling privacy lock.",
+        "step_by_step": "Settings -> Privacy -> Profile Locking -> Enable Private Profile mode.",
+        "risk_reduction_impact": "High (Restricts overall OSINT exposure)"
+      },
+      {
+        "recommendation_id": "REC_FIND_FRIENDS_LIST_PUBLIC",
+        "finding_id": "FIND_FRIENDS_LIST_PUBLIC",
+        "finding_title": "Friends and Followers List Publicly Exposed",
+        "category": "CAT_A",
+        "priority": "IMPORTANT",
+        "action": "Change friend/follower list visibility to 'Only Me'.",
+        "step_by_step": "Privacy Settings -> 'Who can see your friends list?' -> Change from Public to 'Only Me'.",
+        "risk_reduction_impact": "Moderate (Prevents contact scraping and executive impersonation)"
+      },
+      {
+        "recommendation_id": "REC_FIND_TAG_REVIEW_OFF",
+        "finding_id": "FIND_TAG_REVIEW_OFF",
+        "finding_title": "Tag Review and Approval Disabled",
+        "category": "CAT_F",
+        "priority": "IMPORTANT",
+        "action": "Enable Tag Review and Timeline Approval.",
+        "step_by_step": "Settings -> Profile and Tagging -> Enable 'Review posts that you're tagged in before the post appears on your profile'.",
+        "risk_reduction_impact": "Moderate (Prevents non-consensual location and association exposure)"
+      },
+      {
+        "recommendation_id": "REC_FIND_UNKNOWN_CONNECTIONS",
+        "finding_id": "FIND_UNKNOWN_CONNECTIONS",
+        "finding_title": "Connection Requests from Unverified Strangers Accepted",
+        "category": "CAT_E",
+        "priority": "IMPORTANT",
+        "action": "Adopt a strict 'Verify Before Accepting' policy for incoming connection requests.",
+        "step_by_step": "Reject requests from empty profiles or strangers. Verify questionable requests out-of-band before accepting.",
+        "risk_reduction_impact": "Moderate (Keeps adversary sockpuppets outside your private network perimeter)"
+      },
+      {
+        "recommendation_id": "REC_FIND_THIRD_PARTY_UNREVIEWED",
+        "finding_id": "FIND_THIRD_PARTY_UNREVIEWED",
+        "finding_title": "Third-Party App Access Tokens Never Audited",
+        "category": "CAT_H",
+        "priority": "IMPORTANT",
+        "action": "Audit connected third-party apps and revoke permissions for unused integrations.",
+        "step_by_step": "Settings -> Apps and Websites -> Review active connections -> Revoke access for any app unused in the past 90 days.",
+        "risk_reduction_impact": "Moderate (Enforces Principle of Least Privilege across OAuth integrations)"
+      },
+      {
+        "recommendation_id": "REC_FIND_OVERPRIVILEGED_APPS",
+        "finding_id": "FIND_OVERPRIVILEGED_APPS",
+        "finding_title": "Third-Party Apps Granted Broad or Unverified Permissions",
+        "category": "CAT_H",
+        "priority": "IMPORTANT",
+        "action": "Revoke excessive OAuth permissions granted to third-party tools.",
+        "step_by_step": "In the connected apps management menu, remove apps requesting inbox or post-publishing permissions.",
+        "risk_reduction_impact": "Moderate (Minimizes third-party data collection reach)"
+      },
+      {
+        "recommendation_id": "REC_FIND_LOGIN_ALERTS_OFF",
+        "finding_id": "FIND_LOGIN_ALERTS_OFF",
+        "finding_title": "Unrecognized Login Alerts Disabled or Unconfirmed",
+        "category": "CAT_G",
+        "priority": "IMPORTANT",
+        "action": "Turn on alerts for unrecognized logins from new devices.",
+        "step_by_step": "Settings -> Security -> Get alerts about unrecognized logins -> Enable Email and Notification alerts.",
+        "risk_reduction_impact": "Moderate (Provides early breach notification)"
+      },
+      {
+        "recommendation_id": "REC_FIND_ROUTINE_TRACKING",
+        "finding_id": "FIND_ROUTINE_TRACKING",
+        "finding_title": "Predictable Daily Routines and Routes Exposed",
+        "category": "CAT_C",
+        "priority": "GOOD PRACTICE",
+        "action": "Vary posting schedules and avoid sharing exact gym or running routes.",
+        "step_by_step": "Crop route maps from fitness tracker posts and blur out identifiable street names.",
+        "risk_reduction_impact": "Moderate (Protects daily physical schedule)"
+      },
+      {
+        "recommendation_id": "REC_FIND_POSTS_DEFAULT_PUBLIC",
+        "finding_id": "FIND_POSTS_DEFAULT_PUBLIC",
+        "finding_title": "Default Post Audience Set to Public",
+        "category": "CAT_D",
+        "priority": "GOOD PRACTICE",
+        "action": "Change default post audience from Public to Friends or Restricted List.",
+        "step_by_step": "Settings -> Privacy -> 'Who can see your future posts?' -> Select 'Friends'.",
+        "risk_reduction_impact": "Moderate (Creates a safe default posture for future activity)"
+      },
+      {
+        "recommendation_id": "REC_FIND_SECURITY_ANSWER_LEAKS",
+        "finding_id": "FIND_SECURITY_ANSWER_LEAKS",
+        "finding_title": "Participation in Viral Nostalgia / Security-Question Trends",
+        "category": "CAT_D",
+        "priority": "GOOD PRACTICE",
+        "action": "Avoid participating in viral nostalgia surveys asking for first pets, childhood schools, or mothers' maiden names.",
+        "step_by_step": "Recognize that nostalgic viral challenges are often intelligence-gathering lures. Delete past responses.",
+        "risk_reduction_impact": "Moderate (Protects account recovery questions)"
+      },
+      {
+        "recommendation_id": "REC_FIND_ABANDONED_ACCOUNTS",
+        "finding_id": "FIND_ABANDONED_ACCOUNTS",
+        "finding_title": "Dormant / Abandoned Social Accounts Left Online",
+        "category": "CAT_J",
+        "priority": "GOOD PRACTICE",
+        "action": "Delete or secure dormant accounts on platforms you no longer use.",
+        "step_by_step": "Log in to old accounts, export any photos you wish to keep, and permanently request account deletion.",
+        "risk_reduction_impact": "Moderate (Reduces passive attack surface and credential exposure)"
+      },
+      {
+        "recommendation_id": "REC_FIND_FAMILY_PUBLIC",
+        "finding_id": "FIND_FAMILY_PUBLIC",
+        "finding_title": "Family Relationships & Dependents Explicitly Mapped",
+        "category": "CAT_B",
+        "priority": "GOOD PRACTICE",
+        "action": "Remove explicit family tags and relationship linkages from public bio.",
+        "step_by_step": "Edit Profile -> Relationship and Family -> Set visibility to 'Only Me'.",
+        "risk_reduction_impact": "Low (Protects security question answers)"
+      },
+      {
+        "recommendation_id": "REC_FIND_STALE_SESSIONS",
+        "finding_id": "FIND_STALE_SESSIONS",
+        "finding_title": "Active Logged-In Sessions Rarely or Never Audited",
+        "category": "CAT_G",
+        "priority": "GOOD PRACTICE",
+        "action": "Inspect active sessions and click 'Log Out of All Other Sessions'.",
+        "step_by_step": "Settings -> Security & Login -> 'Where you're logged in' -> Review and terminate unfamiliar or older sessions.",
+        "risk_reduction_impact": "Moderate (Revokes stale authentication tokens)"
+      },
+      {
+        "recommendation_id": "REC_FIND_EXIF_GEOTAGGING",
+        "finding_id": "FIND_EXIF_GEOTAGGING",
+        "finding_title": "Camera GPS Geotagging Enabled on Photos",
+        "category": "CAT_C",
+        "priority": "GOOD PRACTICE",
+        "action": "Disable camera location tags on your mobile smartphone.",
+        "step_by_step": "Device Camera Settings -> Save Location / Geotagging -> Toggle Off.",
+        "risk_reduction_impact": "Moderate (Stops GPS coordinate leakage in original image files)"
+      },
+      {
+        "recommendation_id": "REC_FIND_SEARCH_INDEXING",
+        "finding_id": "FIND_SEARCH_INDEXING",
+        "finding_title": "Profile Indexed by External Search Engines",
+        "category": "CAT_A",
+        "priority": "GOOD PRACTICE",
+        "action": "Opt out of external search engine indexing.",
+        "step_by_step": "Privacy Settings -> 'Do you want search engines outside of the platform to link to your profile?' -> Toggle to 'No'.",
+        "risk_reduction_impact": "Low to Moderate (Limits search engine crawler caching)"
+      },
+      {
+        "recommendation_id": "REC_FIND_UNRESTRICTED_TAGGING",
+        "finding_id": "FIND_UNRESTRICTED_TAGGING",
+        "finding_title": "Unrestricted Tagging Permissions",
+        "category": "CAT_F",
+        "priority": "GOOD PRACTICE",
+        "action": "Restrict who can tag you to 'Friends Only' or require manual approval.",
+        "step_by_step": "Settings -> Profile and Tagging -> 'Who can tag you?' -> Change to Friends.",
+        "risk_reduction_impact": "Low (Reduces spam notifications and crypto tagging)"
+      },
+      {
+        "recommendation_id": "REC_FIND_OLD_POSTS_UNAUDITED",
+        "finding_id": "FIND_OLD_POSTS_UNAUDITED",
+        "finding_title": "Years of Historical Public Posts Left Unaudited",
+        "category": "CAT_J",
+        "priority": "GOOD PRACTICE",
+        "action": "Run a historical post audit using the platform's 'Limit Past Posts' tool.",
+        "step_by_step": "Privacy Settings -> 'Limit the audience for old posts' -> Click 'Limit Past Posts' to mass-convert public posts to Friends-Only.",
+        "risk_reduction_impact": "Moderate (Removes years of legacy digital footprint data)"
+      },
+      {
+        "recommendation_id": "REC_FIND_HANDLE_REUSE",
+        "finding_id": "FIND_HANDLE_REUSE",
+        "finding_title": "Identical Handle Reused Across All Platforms",
+        "category": "CAT_J",
+        "priority": "GOOD PRACTICE",
+        "action": "Decouple usernames between professional, gaming, and personal accounts.",
+        "step_by_step": "Use unique pseudonyms for non-professional accounts to prevent automated OSINT linkage.",
+        "risk_reduction_impact": "Low (Complicates adversary reconnaissance across different platforms)"
+      },
+      {
+        "recommendation_id": "REC_FIND_NO_CONNECTION_AUDIT",
+        "finding_id": "FIND_NO_CONNECTION_AUDIT",
+        "finding_title": "Stale Connections Never Audited",
+        "category": "CAT_E",
+        "priority": "GOOD PRACTICE",
+        "action": "Perform a biannual connections spring-cleaning.",
+        "step_by_step": "Scroll through your friends list and unfriend or unfollow people you do not recognize or interact with.",
+        "risk_reduction_impact": "Low (Maintains a clean and trusted circle)"
+      }
+    ],
+    "high_risk_categories": [
+      "Messaging & Social Engineering",
+      "Location Privacy",
+      "Profile Visibility",
+      "Posts & Content",
+      "Third-Party Apps",
+      "Authentication & Account Security",
+      "Friends & Followers",
+      "Tagging & Mentions",
+      "Digital Footprint",
+      "Personal Information"
+    ],
+    "stats": {
+      "total_questions_answered": 44,
+      "critical_findings": 8,
+      "high_findings": 13,
+      "medium_findings": 8,
+      "low_findings": 1,
+      "immediate_actions": 8,
+      "important_actions": 10,
+      "good_practice_actions": 12
+    },
+    "cleaned_responses": {
+      "q1": "PUBLIC",
+      "q2": "YES",
+      "q3": "PUBLIC",
+      "q4": "PUBLIC",
+      "q5": "YES",
+      "q6": "NO",
+      "q7": "FULL_BIRTHDAY",
+      "q8": "YES",
+      "q9": "YES",
+      "q10": "YES",
+      "q11": "IMMEDIATELY",
+      "q12": "YES",
+      "q13": "YES",
+      "q14": "YES",
+      "q15": "PUBLIC",
+      "q16": "YES",
+      "q17": "YES",
+      "q18": "YES",
+      "q19": "ACCEPT_MOST",
+      "q20": "NEVER",
+      "q21": "NEVER",
+      "q22": "ANYONE",
+      "q23": "NO",
+      "q24": "EVERYONE",
+      "q25": "ENABLED",
+      "q26": "EVERYONE",
+      "q27": "DISABLED",
+      "q28": "REUSED",
+      "q29": "NO",
+      "q30": "NO",
+      "q31": "NEVER",
+      "q32": "FREQUENTLY",
+      "q33": "NEVER",
+      "q34": "YES",
+      "q35": "YES",
+      "q36": "CLICK_IMMEDIATELY",
+      "q37": "YES_HELP",
+      "q38": "TRUST_URGENCY",
+      "q39": "ENGAGE_OFTEN",
+      "q40": "NEVER",
+      "q41": "YES_MULTIPLE",
+      "q42": "SAME_EVERYWHERE",
+      "q43": "NEVER",
+      "q44": "NEVER"
+    },
+    "disclaimer": "Educational Risk Framework Disclaimer: This privacy risk assessment is designed exclusively for defensive education and cybersecurity awareness. Scores reflect self-reported exposure configurations and do not guarantee whether an account is or will be compromised."
+  },
+  "simulation": {
+    "baseline": {
+      "overall_score": 90.3,
+      "risk_level": "CRITICAL",
+      "category_scores": {
+        "CAT_A": {
+          "category_id": "CAT_A",
+          "name": "Profile Visibility",
+          "score": 95.0,
+          "weight": 0.1,
+          "risk_level": "CRITICAL",
+          "description": "Evaluates account discoverability, search engine indexing, and friend list exposure."
+        },
+        "CAT_B": {
+          "category_id": "CAT_B",
+          "name": "Personal Information",
+          "score": 76.0,
+          "weight": 0.15,
+          "risk_level": "CRITICAL",
+          "description": "Assesses public visibility of contact details, birth date, home, and family info."
+        },
+        "CAT_C": {
+          "category_id": "CAT_C",
+          "name": "Location Privacy",
+          "score": 96.0,
+          "weight": 0.15,
+          "risk_level": "CRITICAL",
+          "description": "Analyzes live location broadcasts, check-ins, travel itinerary exposure, and GPS geotags."
+        },
+        "CAT_D": {
+          "category_id": "CAT_D",
+          "name": "Posts & Content",
+          "score": 95.0,
+          "weight": 0.1,
+          "risk_level": "CRITICAL",
+          "description": "Measures post audience defaults, sensitive workplace document leaks, and personal oversharing."
+        },
+        "CAT_E": {
+          "category_id": "CAT_E",
+          "name": "Friends & Followers",
+          "score": 87.5,
+          "weight": 0.1,
+          "risk_level": "CRITICAL",
+          "description": "Evaluates handling of stranger requests, follower audits, and audience segmentations."
+        },
+        "CAT_F": {
+          "category_id": "CAT_F",
+          "name": "Tagging & Mentions",
+          "score": 85.0,
+          "weight": 0.05,
+          "risk_level": "CRITICAL",
+          "description": "Assesses tagging approvals, facial recognition suggestions, and public mention permissions."
+        },
+        "CAT_G": {
+          "category_id": "CAT_G",
+          "name": "Authentication & Account Security",
+          "score": 92.0,
+          "weight": 0.15,
+          "risk_level": "CRITICAL",
+          "description": "Reviews multi-factor authentication (MFA), password hygiene, login alerts, and active sessions."
+        },
+        "CAT_H": {
+          "category_id": "CAT_H",
+          "name": "Third-Party Apps",
+          "score": 95.0,
+          "weight": 0.05,
+          "risk_level": "CRITICAL",
+          "description": "Measures OAuth permissions, connected legacy apps, social logins, and viral quiz access."
+        },
+        "CAT_I": {
+          "category_id": "CAT_I",
+          "name": "Messaging & Social Engineering",
+          "score": 97.5,
+          "weight": 0.1,
+          "risk_level": "CRITICAL",
+          "description": "Assesses phishing awareness, OTP/verification code hygiene, impersonation vigilance, and scam DM interaction."
+        },
+        "CAT_J": {
+          "category_id": "CAT_J",
+          "name": "Digital Footprint",
+          "score": 84.0,
+          "weight": 0.05,
+          "risk_level": "CRITICAL",
+          "description": "Evaluates historical post cleanup, abandoned account posture, username correlation, and privacy audits."
+        }
+      }
+    },
+    "simulated": {
+      "overall_score": 64.0,
+      "risk_level": "HIGH",
+      "category_scores": {
+        "CAT_A": {
+          "category_id": "CAT_A",
+          "name": "Profile Visibility",
+          "score": 95.0,
+          "weight": 0.1,
+          "risk_level": "CRITICAL",
+          "description": "Evaluates account discoverability, search engine indexing, and friend list exposure."
+        },
+        "CAT_B": {
+          "category_id": "CAT_B",
+          "name": "Personal Information",
+          "score": 36.0,
+          "weight": 0.15,
+          "risk_level": "MODERATE",
+          "description": "Assesses public visibility of contact details, birth date, home, and family info."
+        },
+        "CAT_C": {
+          "category_id": "CAT_C",
+          "name": "Location Privacy",
+          "score": 58.0,
+          "weight": 0.15,
+          "risk_level": "HIGH",
+          "description": "Analyzes live location broadcasts, check-ins, travel itinerary exposure, and GPS geotags."
+        },
+        "CAT_D": {
+          "category_id": "CAT_D",
+          "name": "Posts & Content",
+          "score": 95.0,
+          "weight": 0.1,
+          "risk_level": "CRITICAL",
+          "description": "Measures post audience defaults, sensitive workplace document leaks, and personal oversharing."
+        },
+        "CAT_E": {
+          "category_id": "CAT_E",
+          "name": "Friends & Followers",
+          "score": 62.5,
+          "weight": 0.1,
+          "risk_level": "HIGH",
+          "description": "Evaluates handling of stranger requests, follower audits, and audience segmentations."
+        },
+        "CAT_F": {
+          "category_id": "CAT_F",
+          "name": "Tagging & Mentions",
+          "score": 60.0,
+          "weight": 0.05,
+          "risk_level": "HIGH",
+          "description": "Assesses tagging approvals, facial recognition suggestions, and public mention permissions."
+        },
+        "CAT_G": {
+          "category_id": "CAT_G",
+          "name": "Authentication & Account Security",
+          "score": 34.0,
+          "weight": 0.15,
+          "risk_level": "MODERATE",
+          "description": "Reviews multi-factor authentication (MFA), password hygiene, login alerts, and active sessions."
+        },
+        "CAT_H": {
+          "category_id": "CAT_H",
+          "name": "Third-Party Apps",
+          "score": 70.0,
+          "weight": 0.05,
+          "risk_level": "HIGH",
+          "description": "Measures OAuth permissions, connected legacy apps, social logins, and viral quiz access."
+        },
+        "CAT_I": {
+          "category_id": "CAT_I",
+          "name": "Messaging & Social Engineering",
+          "score": 97.5,
+          "weight": 0.1,
+          "risk_level": "CRITICAL",
+          "description": "Assesses phishing awareness, OTP/verification code hygiene, impersonation vigilance, and scam DM interaction."
+        },
+        "CAT_J": {
+          "category_id": "CAT_J",
+          "name": "Digital Footprint",
+          "score": 66.0,
+          "weight": 0.05,
+          "risk_level": "HIGH",
+          "description": "Evaluates historical post cleanup, abandoned account posture, username correlation, and privacy audits."
+        }
+      }
+    },
+    "points_reduced": 26.3,
+    "percentage_improvement": 29.1,
+    "applied_changes": [
+      {
+        "key": "make_phone_private",
+        "label": "Make mobile phone number private / hidden",
+        "category": "CAT_B",
+        "category_name": "Personal Information",
+        "previous_value": "YES",
+        "simulated_value": "NO"
+      },
+      {
+        "key": "hide_birth_year",
+        "label": "Hide birth year or full birth date",
+        "category": "CAT_B",
+        "category_name": "Personal Information",
+        "previous_value": "FULL_BIRTHDAY",
+        "simulated_value": "HIDDEN"
+      },
+      {
+        "key": "disable_realtime_location",
+        "label": "Disable real-time live location broadcasts",
+        "category": "CAT_C",
+        "category_name": "Location Privacy",
+        "previous_value": "YES",
+        "simulated_value": "NO"
+      },
+      {
+        "key": "delay_venue_checkins",
+        "label": "Delay venue check-ins until after leaving",
+        "category": "CAT_C",
+        "category_name": "Location Privacy",
+        "previous_value": "IMMEDIATELY",
+        "simulated_value": "AFTER_LEAVING"
+      },
+      {
+        "key": "restrict_unknown_connections",
+        "label": "Reject or thoroughly verify unknown friend/follow requests",
+        "category": "CAT_E",
+        "category_name": "Friends & Followers",
+        "previous_value": "ACCEPT_MOST",
+        "simulated_value": "REJECT_UNKNOWN"
+      },
+      {
+        "key": "enable_tag_review",
+        "label": "Enable tag review before posts appear on profile",
+        "category": "CAT_F",
+        "category_name": "Tagging & Mentions",
+        "previous_value": "NO",
+        "simulated_value": "YES"
+      },
+      {
+        "key": "enable_mfa",
+        "label": "Enable Multi-Factor Authentication (MFA / 2FA)",
+        "category": "CAT_G",
+        "category_name": "Authentication & Account Security",
+        "previous_value": "DISABLED",
+        "simulated_value": "APP_OR_HARDWARE"
+      },
+      {
+        "key": "unique_password",
+        "label": "Use a completely unique password & password manager",
+        "category": "CAT_G",
+        "category_name": "Authentication & Account Security",
+        "previous_value": "REUSED",
+        "simulated_value": "COMPLETELY_UNIQUE"
+      },
+      {
+        "key": "enable_login_alerts",
+        "label": "Turn on unrecognized login alerts",
+        "category": "CAT_G",
+        "category_name": "Authentication & Account Security",
+        "previous_value": "NO",
+        "simulated_value": "YES"
+      },
+      {
+        "key": "audit_third_party_apps",
+        "label": "Audit and revoke unused third-party application permissions",
+        "category": "CAT_H",
+        "category_name": "Third-Party Apps",
+        "previous_value": "NEVER",
+        "simulated_value": "REGULARLY"
+      },
+      {
+        "key": "limit_past_posts",
+        "label": "Review and mass-privatize historical public posts",
+        "category": "CAT_J",
+        "category_name": "Digital Footprint",
+        "previous_value": "NEVER",
+        "simulated_value": "REGULARLY"
+      }
+    ],
+    "available_presets": {
+      "make_phone_private": {
+        "label": "Make mobile phone number private / hidden",
+        "question_id": "q5",
+        "hardened_value": "NO",
+        "category": "CAT_B",
+        "category_name": "Personal Information"
+      },
+      "hide_birth_year": {
+        "label": "Hide birth year or full birth date",
+        "question_id": "q7",
+        "hardened_value": "HIDDEN",
+        "category": "CAT_B",
+        "category_name": "Personal Information"
+      },
+      "disable_realtime_location": {
+        "label": "Disable real-time live location broadcasts",
+        "question_id": "q10",
+        "hardened_value": "NO",
+        "category": "CAT_C",
+        "category_name": "Location Privacy"
+      },
+      "delay_venue_checkins": {
+        "label": "Delay venue check-ins until after leaving",
+        "question_id": "q11",
+        "hardened_value": "AFTER_LEAVING",
+        "category": "CAT_C",
+        "category_name": "Location Privacy"
+      },
+      "enable_mfa": {
+        "label": "Enable Multi-Factor Authentication (MFA / 2FA)",
+        "question_id": "q27",
+        "hardened_value": "APP_OR_HARDWARE",
+        "category": "CAT_G",
+        "category_name": "Authentication & Account Security"
+      },
+      "unique_password": {
+        "label": "Use a completely unique password & password manager",
+        "question_id": "q28",
+        "hardened_value": "COMPLETELY_UNIQUE",
+        "category": "CAT_G",
+        "category_name": "Authentication & Account Security"
+      },
+      "enable_login_alerts": {
+        "label": "Turn on unrecognized login alerts",
+        "question_id": "q30",
+        "hardened_value": "YES",
+        "category": "CAT_G",
+        "category_name": "Authentication & Account Security"
+      },
+      "enable_tag_review": {
+        "label": "Enable tag review before posts appear on profile",
+        "question_id": "q23",
+        "hardened_value": "YES",
+        "category": "CAT_F",
+        "category_name": "Tagging & Mentions"
+      },
+      "restrict_unknown_connections": {
+        "label": "Reject or thoroughly verify unknown friend/follow requests",
+        "question_id": "q19",
+        "hardened_value": "REJECT_UNKNOWN",
+        "category": "CAT_E",
+        "category_name": "Friends & Followers"
+      },
+      "audit_third_party_apps": {
+        "label": "Audit and revoke unused third-party application permissions",
+        "question_id": "q33",
+        "hardened_value": "REGULARLY",
+        "category": "CAT_H",
+        "category_name": "Third-Party Apps"
+      },
+      "limit_past_posts": {
+        "label": "Review and mass-privatize historical public posts",
+        "question_id": "q40",
+        "hardened_value": "REGULARLY",
+        "category": "CAT_J",
+        "category_name": "Digital Footprint"
+      },
+      "verify_phishing_links": {
+        "label": "Adopt strict out-of-band verification for suspicious DMs",
+        "question_id": "q36",
+        "hardened_value": "VERIFY_OUT_OF_BAND",
+        "category": "CAT_I",
+        "category_name": "Messaging & Social Engineering"
+      }
+    },
+    "disclaimer": "Educational Risk Simulation: This reduction is an algorithmic estimation based on standard risk reduction weights. It serves as educational guidance and does not guarantee immunity from cyber threats or account compromise."
+  }
+}

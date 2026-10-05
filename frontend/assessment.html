@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Assessment Wizard | Social Media Privacy Risk Framework</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="/" class="brand">
+                <i class="fa-solid fa-shield-halved brand-icon"></i>
+                <div class="brand-text">
+                    <h1>PrivacyGuard Risk Engine</h1>
+                    <p>Assessment Wizard</p>
+                </div>
+            </a>
+            <ul class="nav-links">
+                <li><a href="/"><i class="fa-solid fa-house"></i> Home</a></li>
+                <li><a href="/assessment" class="active"><i class="fa-solid fa-clipboard-check"></i> Assessment</a></li>
+                <li><a href="/dashboard"><i class="fa-solid fa-chart-line"></i> Dashboard</a></li>
+                <li><a href="/simulator"><i class="fa-solid fa-sliders"></i> Simulator</a></li>
+                <li><a href="/metadata"><i class="fa-solid fa-camera"></i> Metadata Tool</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Container -->
+    <div class="container">
+        
+        <!-- Header & Quick Demos -->
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.5rem;">
+            <div>
+                <h1 style="font-size: 2rem; font-weight: 800;">Privacy Risk Assessment</h1>
+                <p style="color: var(--text-secondary); font-size: 0.95rem;">
+                    Answer the questions honestly based on your primary social account settings.
+                </p>
+            </div>
+            <div style="display: flex; gap: 0.75rem;">
+                <button type="button" class="btn btn-secondary" id="btn-fill-safe" style="font-size: 0.85rem; padding: 0.5rem 1rem;">
+                    <i class="fa-solid fa-shield"></i> Demo: Privacy-Conscious
+                </button>
+                <button type="button" class="btn btn-secondary" id="btn-fill-high" style="font-size: 0.85rem; padding: 0.5rem 1rem; border-color: rgba(239, 68, 68, 0.4); color: #fca5a5;">
+                    <i class="fa-solid fa-triangle-exclamation"></i> Demo: High-Exposure
+                </button>
+            </div>
+        </div>
+
+        <!-- Wizard Progress Bar -->
+        <div class="wizard-progress">
+            <div class="progress-header">
+                <span id="wizard-progress-category">Category 1 of 10: Profile Visibility</span>
+                <span id="wizard-progress-count">0 of 44 Questions Answered</span>
+            </div>
+            <div class="progress-bar-bg">
+                <div class="progress-bar-fill" id="wizard-progress-bar"></div>
+            </div>
+            <div class="category-pills" id="category-pills-container">
+                <!-- Injected via JavaScript -->
+            </div>
+        </div>
+
+        <!-- Assessment Form -->
+        <form id="assessment-form">
+            <div id="questions-container">
+                <!-- Category questions dynamically rendered here -->
+                <div style="text-align: center; padding: 3rem; color: var(--text-muted);">
+                    <i class="fa-solid fa-spinner fa-spin fa-2x"></i>
+                    <p style="margin-top: 1rem;">Loading defensive assessment questionnaire...</p>
+                </div>
+            </div>
+
+            <!-- Navigation Buttons -->
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--border-color);">
+                <button type="button" class="btn btn-secondary" id="btn-prev" disabled>
+                    <i class="fa-solid fa-arrow-left"></i> Previous Category
+                </button>
+                <div>
+                    <button type="button" class="btn btn-primary" id="btn-next">
+                        Next Category <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                    <button type="submit" class="btn btn-primary" id="btn-submit" style="display: none; background: linear-gradient(135deg, #10b981, #06b6d4);">
+                        <i class="fa-solid fa-shield-virus"></i> Calculate Privacy Risk Score
+                    </button>
+                </div>
+            </div>
+        </form>
+
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p><strong>Privacy by Design Guarantee</strong>: Zero passwords, actual phone numbers, or account names are ever collected or stored.</p>
+        </div>
+    </footer>
+
+    <script src="/js/app.js"></script>
+    <script src="/js/assessment.js"></script>
+</body>
+</html>

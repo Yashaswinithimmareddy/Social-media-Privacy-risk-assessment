@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Risk Assessment Report | PrivacyGuard</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .report-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 1.5rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        .report-meta {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+        .finding-card {
+            background-color: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 1.25rem;
+            margin-bottom: 1rem;
+        }
+        .rec-step {
+            background: rgba(0, 0, 0, 0.2);
+            border-left: 3px solid var(--accent-blue);
+            padding: 0.75rem 1rem;
+            margin-top: 0.5rem;
+            border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+            font-size: 0.88rem;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar btn-no-print">
+        <div class="nav-container">
+            <a href="/" class="brand">
+                <i class="fa-solid fa-shield-halved brand-icon"></i>
+                <div class="brand-text">
+                    <h1>PrivacyGuard Risk Engine</h1>
+                    <p>Formal Assessment Report</p>
+                </div>
+            </a>
+            <ul class="nav-links">
+                <li><a href="/"><i class="fa-solid fa-house"></i> Home</a></li>
+                <li><a href="/assessment"><i class="fa-solid fa-clipboard-check"></i> Assessment</a></li>
+                <li><a href="/dashboard"><i class="fa-solid fa-chart-line"></i> Dashboard</a></li>
+                <li><a href="/simulator"><i class="fa-solid fa-sliders"></i> Simulator</a></li>
+                <li><a href="/metadata"><i class="fa-solid fa-camera"></i> Metadata Tool</a></li>
+                <li>
+                    <button onclick="window.print()" class="btn btn-primary" style="padding: 0.4rem 0.85rem; font-size: 0.85rem;">
+                        <i class="fa-solid fa-print"></i> Export to PDF / Print
+                    </button>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container" style="max-width: 1050px;">
+        
+        <!-- Report Header -->
+        <header class="report-header">
+            <div>
+                <span class="badge badge-high" style="margin-bottom: 0.5rem; background: rgba(59, 130, 246, 0.2); color: #60a5fa; border-color: rgba(59, 130, 246, 0.4);">
+                    <i class="fa-solid fa-file-shield"></i> Defensive Cybersecurity Assessment
+                </span>
+                <h1 style="font-size: 2.2rem; font-weight: 800; margin-top: 0.25rem;">
+                    Social Media Privacy Risk Report
+                </h1>
+                <div class="report-meta">
+                    <div><strong>Assessment Identifier:</strong> <span id="rep-id" style="font-family: var(--font-mono); color: var(--accent-cyan);">Loading...</span></div>
+                    <div><strong>Generated Date:</strong> <span id="rep-date">--</span></div>
+                    <div><strong>Framework Version:</strong> NIST Privacy / ISO 27701 Aligned v1.0</div>
+                </div>
+            </div>
+            
+            <div style="text-align: right; display: flex; flex-direction: column; align-items: flex-end;">
+                <div style="font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em;">
+                    Assessed Privacy Risk
+                </div>
+                <div style="font-size: 3.5rem; font-weight: 900; line-height: 1;" id="rep-overall-score">
+                    --
+                </div>
+                <div id="rep-risk-badge" style="margin-top: 0.25rem;">
+                    <span class="badge">--</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Executive Summary Card -->
+        <section class="card" style="margin-bottom: 2rem;">
+            <div class="card-title">
+                <i class="fa-solid fa-briefcase" style="color: #60a5fa;"></i> Executive Risk Summary
+            </div>
+            <p id="rep-exec-summary" style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.7;">
+                Analyzing exposure vectors and behavioral settings...
+            </p>
+            <div style="display: flex; gap: 1rem; margin-top: 1.25rem; flex-wrap: wrap;">
+                <div style="flex: 1; min-width: 150px; background: rgba(0,0,0,0.2); padding: 0.75rem; border-radius: var(--radius-sm); border: 1px solid var(--border-color);">
+                    <div style="font-size: 0.75rem; color: var(--text-muted);">CRITICAL VULNERABILITIES</div>
+                    <div style="font-size: 1.5rem; font-weight: 800; color: var(--risk-critical);" id="rep-crit-count">0</div>
+                </div>
+                <div style="flex: 1; min-width: 150px; background: rgba(0,0,0,0.2); padding: 0.75rem; border-radius: var(--radius-sm); border: 1px solid var(--border-color);">
+                    <div style="font-size: 0.75rem; color: var(--text-muted);">HIGH VULNERABILITIES</div>
+                    <div style="font-size: 1.5rem; font-weight: 800; color: var(--risk-high);" id="rep-high-count">0</div>
+                </div>
+                <div style="flex: 1; min-width: 150px; background: rgba(0,0,0,0.2); padding: 0.75rem; border-radius: var(--radius-sm); border: 1px solid var(--border-color);">
+                    <div style="font-size: 0.75rem; color: var(--text-muted);">IMMEDIATE REMEDIATIONS</div>
+                    <div style="font-size: 1.5rem; font-weight: 800; color: #fbbf24;" id="rep-immed-count">0</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Category Score Breakdown -->
+        <section class="card" style="margin-bottom: 2rem;">
+            <div class="card-title">
+                <i class="fa-solid fa-layer-group" style="color: var(--accent-cyan);"></i> Category-Wise Exposure Breakdown (0–100)
+            </div>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1rem;">
+                Each category is scored from 0 (Best Privacy / Least Exposed) to 100 (Critical Vulnerability).
+            </p>
+            <div class="table-responsive">
+                <table class="cyber-table">
+                    <thead>
+                        <tr>
+                            <th>Category</th>
+                            <th>Assigned Weight</th>
+                            <th>Exposure Score</th>
+                            <th>Risk Tier</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="rep-categories-table">
+                        <!-- Populated by JS -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Detected Findings -->
+        <section class="card" style="margin-bottom: 2rem;">
+            <div class="card-title">
+                <i class="fa-solid fa-triangle-exclamation" style="color: #f87171;"></i> Detected Privacy Findings & Exposure Vectors
+            </div>
+            <div id="rep-findings-list">
+                <!-- Populated by JS -->
+            </div>
+        </section>
+
+        <!-- Actionable Recommendations -->
+        <section class="card" style="margin-bottom: 2rem;">
+            <div class="card-title">
+                <i class="fa-solid fa-shield-check" style="color: #34d399;"></i> Prioritized Security Recommendations
+            </div>
+            <div id="rep-recommendations-list">
+                <!-- Populated by JS -->
+            </div>
+        </section>
+
+        <!-- Defensive Privacy Checklist -->
+        <section class="card" style="margin-bottom: 2rem;">
+            <div class="card-title">
+                <i class="fa-solid fa-list-check" style="color: #c084fc;"></i> Social Media Defensive Hardening Checklist
+            </div>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1rem;">
+                Check off each control as you harden your platform settings.
+            </p>
+            <div id="rep-checklist-container" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 0.75rem;">
+                <!-- Populated by JS -->
+            </div>
+        </section>
+
+        <!-- Report Footer / Legal Disclaimer -->
+        <div class="callout callout-info" style="font-size: 0.82rem; line-height: 1.6;">
+            <strong><i class="fa-solid fa-scale-balanced"></i> Ethical Framework & Data Protection Disclaimer:</strong><br>
+            This privacy risk assessment report was compiled dynamically using self-reported privacy configurations and defense weights.
+            It is designed strictly for defensive cybersecurity education and posture analysis. No third-party social profiles were scraped, 
+            and no personally identifiable information (PII) such as phone numbers, emails, or names are retained.
+        </div>
+
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer btn-no-print">
+        <div class="footer-content">
+            <p><strong>PrivacyGuard Risk Engine</strong> • Defensive Cybersecurity Course Project</p>
+        </div>
+    </footer>
+
+    <script src="/js/app.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", async () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const aid = urlParams.get("id");
+
+            let assessmentData = null;
+            if (aid) {
+                try {
+                    assessmentData = await apiRequest(`/assessment/${aid}`);
+                } catch (e) {
+                    console.warn("Could not load from API, checking session storage...");
+                }
+            }
+
+            if (!assessmentData) {
+                const stored = sessionStorage.getItem("last_assessment");
+                if (stored) {
+                    assessmentData = JSON.parse(stored);
+                }
+            }
+
+            if (assessmentData) {
+                renderReport(assessmentData);
+            } else {
+                document.getElementById("rep-id").textContent = "No assessment found";
+                document.getElementById("rep-exec-summary").textContent = "Please complete an assessment first.";
+            }
+
+            // Load standard checklist
+            loadChecklist();
+        });
+
+        function renderReport(data) {
+            document.getElementById("rep-id").textContent = data.assessment_id;
+            document.getElementById("rep-date").textContent = new Date(data.created_at || Date.now()).toUTCString();
+
+            const scoreElem = document.getElementById("rep-overall-score");
+            scoreElem.textContent = data.overall_score.toFixed(1);
+            if (data.overall_score <= 20) scoreElem.style.color = "var(--risk-low)";
+            else if (data.overall_score <= 40) scoreElem.style.color = "var(--risk-moderate)";
+            else if (data.overall_score <= 70) scoreElem.style.color = "var(--risk-high)";
+            else scoreElem.style.color = "var(--risk-critical)";
+
+            document.getElementById("rep-risk-badge").innerHTML = getRiskBadge(data.risk_level);
+
+            // Summary counts
+            const critCount = data.findings ? data.findings.filter(f => f.severity === "CRITICAL").length : 0;
+            const highCount = data.findings ? data.findings.filter(f => f.severity === "HIGH").length : 0;
+            const immedCount = data.recommendations ? data.recommendations.filter(r => r.priority === "IMMEDIATE").length : 0;
+
+            document.getElementById("rep-crit-count").textContent = critCount;
+            document.getElementById("rep-high-count").textContent = highCount;
+            document.getElementById("rep-immed-count").textContent = immedCount;
+
+            // Executive Summary text
+            document.getElementById("rep-exec-summary").innerHTML = `
+                The evaluated profile exhibits an overall privacy risk score of <strong>${data.overall_score}/100</strong>, 
+                classifying it in the <strong>${data.risk_level}</strong> risk tier. 
+                ${data.overall_score >= 41 
+                    ? `Significant exposure vectors were detected, including ${critCount} critical and ${highCount} high-severity findings. Immediate remediation of contact information and authentication controls is strongly advised.`
+                    : `The profile demonstrates robust defensive privacy controls with limited exposure footprint. Continuing regular setting audits is recommended.`}
+            `;
+
+            // Category Table
+            const catTable = document.getElementById("rep-categories-table");
+            catTable.innerHTML = Object.values(data.category_scores || {}).map(c => `
+                <tr>
+                    <td style="font-weight: 600;">${c.name}</td>
+                    <td style="color: var(--text-muted);">${Math.round(c.weight * 100)}%</td>
+                    <td><strong>${c.score}</strong> / 100</td>
+                    <td>${getRiskBadge(c.risk_level || (c.score <= 20 ? 'LOW' : c.score <= 40 ? 'MODERATE' : c.score <= 70 ? 'HIGH' : 'CRITICAL'))}</td>
+                    <td>
+                        <div class="progress-bar-bg" style="height: 6px; width: 120px;">
+                            <div class="progress-bar-fill" style="width: ${c.score}%; background: ${c.score <= 20 ? '#10b981' : c.score <= 40 ? '#f59e0b' : c.score <= 70 ? '#f97316' : '#ef4444'};"></div>
+                        </div>
+                    </td>
+                </tr>
+            `).join("");
+
+            // Findings List
+            const findingsContainer = document.getElementById("rep-findings-list");
+            if (!data.findings || data.findings.length === 0) {
+                findingsContainer.innerHTML = `<p style="color: var(--risk-low);"><i class="fa-solid fa-circle-check"></i> No critical exposure vectors detected!</p>`;
+            } else {
+                findingsContainer.innerHTML = data.findings.map(f => `
+                    <div class="finding-card" style="border-left: 4px solid ${f.severity === 'CRITICAL' ? 'var(--risk-critical)' : f.severity === 'HIGH' ? 'var(--risk-high)' : '#f59e0b'};">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.35rem;">
+                            <h4 style="font-size: 1rem; font-weight: 700;">${f.title}</h4>
+                            <span class="badge ${f.severity === 'CRITICAL' ? 'badge-critical' : f.severity === 'HIGH' ? 'badge-high' : 'badge-moderate'}">${f.severity}</span>
+                        </div>
+                        <p style="font-size: 0.88rem; color: var(--text-secondary); margin-bottom: 0.5rem;">${f.description}</p>
+                        <div style="font-size: 0.82rem; color: #9ca3af; background: rgba(0,0,0,0.25); padding: 0.5rem 0.75rem; border-radius: var(--radius-sm);">
+                            <strong style="color: var(--accent-cyan);"><i class="fa-solid fa-crosshairs"></i> Attack Vector Impact:</strong> ${f.technical_impact || ''}
+                        </div>
+                    </div>
+                `).join("");
+            }
+
+            // Recommendations List
+            const recContainer = document.getElementById("rep-recommendations-list");
+            if (!data.recommendations || data.recommendations.length === 0) {
+                recContainer.innerHTML = `<p style="color: var(--text-muted);">No open remediation actions.</p>`;
+            } else {
+                recContainer.innerHTML = data.recommendations.map(r => `
+                    <div class="finding-card">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.35rem;">
+                            <div style="display: flex; align-items: center; gap: 0.5rem;">
+                                <span class="badge ${r.priority === 'IMMEDIATE' ? 'badge-critical' : r.priority === 'IMPORTANT' ? 'badge-high' : 'badge-low'}">${r.priority}</span>
+                                <h4 style="font-size: 0.95rem; font-weight: 600;">${r.action}</h4>
+                            </div>
+                            <span style="font-size: 0.75rem; color: #34d399; font-weight: 600;">${r.risk_reduction_impact || ''}</span>
+                        </div>
+                        <div class="rec-step">
+                            <strong style="color: var(--text-primary);"><i class="fa-solid fa-wrench"></i> Recommended Remediation:</strong><br>
+                            ${r.step_by_step}
+                        </div>
+                    </div>
+                `).join("");
+            }
+        }
+
+        async function loadChecklist() {
+            try {
+                const res = await apiRequest("/privacy-checklist");
+                const container = document.getElementById("rep-checklist-container");
+                container.innerHTML = res.checklist.map((item, idx) => `
+                    <label style="display: flex; align-items: flex-start; gap: 0.6rem; padding: 0.65rem 0.85rem; background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-md); font-size: 0.85rem; cursor: pointer;">
+                        <input type="checkbox" style="margin-top: 0.2rem; accent-color: var(--accent-blue); width: 16px; height: 16px;">
+                        <div>
+                            <div>${item.item}</div>
+                            <span style="font-size: 0.72rem; color: var(--accent-cyan);">${item.category}</span>
+                        </div>
+                    </label>
+                `).join("");
+            } catch (e) {
+                console.error("Checklist load error:", e);
+            }
+        }
+    </script>
+</body>
+</html>

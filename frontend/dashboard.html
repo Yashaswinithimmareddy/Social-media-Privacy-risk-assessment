@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Analytics Dashboard | Cybersecurity Framework</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="/" class="brand">
+                <i class="fa-solid fa-shield-halved brand-icon"></i>
+                <div class="brand-text">
+                    <h1>PrivacyGuard Risk Engine</h1>
+                    <p>Security Analytics & Reporting</p>
+                </div>
+            </a>
+            <ul class="nav-links">
+                <li><a href="/"><i class="fa-solid fa-house"></i> Home</a></li>
+                <li><a href="/assessment"><i class="fa-solid fa-clipboard-check"></i> Assessment</a></li>
+                <li><a href="/dashboard" class="active"><i class="fa-solid fa-chart-line"></i> Dashboard</a></li>
+                <li><a href="/simulator"><i class="fa-solid fa-sliders"></i> Simulator</a></li>
+                <li><a href="/metadata"><i class="fa-solid fa-camera"></i> Metadata Tool</a></li>
+                <li><a href="/assessment" class="btn-nav-primary"><i class="fa-solid fa-plus"></i> New Assessment</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container">
+        
+        <!-- Header -->
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; flex-wrap: wrap; gap: 1rem;">
+            <div>
+                <h1 style="font-size: 2rem; font-weight: 800;">Cybersecurity Privacy Dashboard</h1>
+                <p style="color: var(--text-secondary); font-size: 0.95rem;">
+                    Aggregated telemetry, category vulnerability indexes, and benchmark comparisons.
+                </p>
+            </div>
+            <div style="display: flex; gap: 0.75rem;">
+                <a href="/assessment" class="btn btn-primary">
+                    <i class="fa-solid fa-play"></i> Start Privacy Assessment
+                </a>
+            </div>
+        </div>
+
+        <!-- Top Metrics Cards -->
+        <div class="grid-4">
+            <div class="stat-card">
+                <div class="stat-icon" style="background: rgba(59, 130, 246, 0.15); color: #60a5fa;">
+                    <i class="fa-solid fa-shield-virus"></i>
+                </div>
+                <div>
+                    <div class="stat-value" id="stat-total-assessments">--</div>
+                    <div class="stat-label">Total Assessments</div>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon" style="background: rgba(245, 158, 11, 0.15); color: #fbbf24;">
+                    <i class="fa-solid fa-chart-column"></i>
+                </div>
+                <div>
+                    <div class="stat-value" id="stat-avg-score">--</div>
+                    <div class="stat-label">Average Risk Score</div>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon" style="background: rgba(239, 68, 68, 0.15); color: #f87171;">
+                    <i class="fa-solid fa-triangle-exclamation"></i>
+                </div>
+                <div>
+                    <div class="stat-value" id="stat-critical-count">--</div>
+                    <div class="stat-label">Critical Tier Profiles</div>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon" style="background: rgba(16, 185, 129, 0.15); color: #34d399;">
+                    <i class="fa-solid fa-circle-check"></i>
+                </div>
+                <div>
+                    <div class="stat-value" id="stat-low-count">--</div>
+                    <div class="stat-label">Hardened / Low Risk</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Charts Grid 1: Radar & Donut -->
+        <div class="grid-2">
+            <div class="card">
+                <div class="card-title">
+                    <i class="fa-solid fa-spider" style="color: var(--accent-cyan);"></i> 10-Category Privacy Risk Radar
+                </div>
+                <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1rem;">
+                    Average vulnerability across the 10 evaluated defense categories (0=Safe, 100=Critical Exposure).
+                </p>
+                <div style="position: relative; height: 320px;">
+                    <canvas id="categoryRadarChart"></canvas>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-title">
+                    <i class="fa-solid fa-chart-pie" style="color: #fb923c;"></i> Risk Classification Distribution
+                </div>
+                <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1rem;">
+                    Proportion of profiles classified into Low, Moderate, High, and Critical risk tiers.
+                </p>
+                <div style="position: relative; height: 320px;">
+                    <canvas id="riskDonutChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- Charts Grid 2: Category Bar & Top Weaknesses -->
+        <div class="grid-2">
+            <div class="card">
+                <div class="card-title">
+                    <i class="fa-solid fa-chart-simple" style="color: #818cf8;"></i> Category Exposure Comparison (0–100)
+                </div>
+                <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1rem;">
+                    Higher score indicates greater public exposure and privacy deficiency.
+                </p>
+                <div style="position: relative; height: 300px;">
+                    <canvas id="categoryBarChart"></canvas>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-title">
+                    <i class="fa-solid fa-bug" style="color: #f43f5e;"></i> Top Recurring Privacy Weaknesses
+                </div>
+                <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1rem;">
+                    Most frequent critical & high findings detected across assessed profiles.
+                </p>
+                <div style="position: relative; height: 300px;">
+                    <canvas id="topWeaknessesChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- Recent Assessments Table -->
+        <div class="card" style="margin-top: 2rem;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.25rem;">
+                <div class="card-title" style="margin-bottom: 0;">
+                    <i class="fa-solid fa-list-check" style="color: #34d399;"></i> Recent Anonymized Assessments
+                </div>
+                <span style="font-size: 0.8rem; color: var(--text-muted);">Privacy-Minimization: Zero PII Recorded</span>
+            </div>
+            <div class="table-responsive">
+                <table class="cyber-table">
+                    <thead>
+                        <tr>
+                            <th>Assessment ID</th>
+                            <th>Timestamp (UTC)</th>
+                            <th>Privacy Risk Score</th>
+                            <th>Risk Level</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="recent-assessments-body">
+                        <tr>
+                            <td colspan="5" style="text-align: center; color: var(--text-muted); padding: 2rem;">
+                                <i class="fa-solid fa-spinner fa-spin"></i> Loading recent assessment telemetry...
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p><strong>PrivacyGuard Dashboard</strong> • Real-time Threat Surface Telemetry</p>
+        </div>
+    </footer>
+
+    <script src="/js/app.js"></script>
+    <script src="/js/dashboard.js"></script>
+</body>
+</html>

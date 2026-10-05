@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Assessment Report - PRA-716E41E0</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0b0f19; color: #f9fafb; margin: 2rem auto; max-width: 900px; line-height: 1.6; }
+        .badge { padding: 4px 8px; border-radius: 4px; font-weight: bold; font-size: 0.75rem; text-transform: uppercase; }
+        .badge-critical { background: rgba(239, 68, 68, 0.2); color: #ef4444; border: 1px solid #ef4444; }
+        .badge-moderate { background: rgba(245, 158, 11, 0.2); color: #f59e0b; border: 1px solid #f59e0b; }
+        .card { background: #111827; border: 1px solid #374151; border-radius: 8px; padding: 1.5rem; margin-bottom: 1.5rem; }
+        table { width: 100%; border-collapse: collapse; margin-top: 1rem; }
+        th, td { padding: 10px; border-bottom: 1px solid #374151; text-align: left; }
+        th { background: #1f2937; color: #9ca3af; }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1 style="margin: 0; color: #06b6d4;">Social Media Privacy Risk Assessment Report</h1>
+        <p style="color: #9ca3af; margin: 5px 0 20px 0;">Identifier: PRA-716E41E0 | Date: 2026-10-05T11:53:59.377884+00:00</p>
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+            <div>
+                <h2>Overall Risk Score: <span style="color: #ef4444;">90.3 / 100</span></h2>
+                <div>Classification: <span class="badge badge-critical">CRITICAL</span></div>
+            </div>
+            <div style="background: rgba(16, 185, 129, 0.1); border: 1px solid #10b981; padding: 15px; border-radius: 8px; text-align: right;">
+                <div style="font-size: 0.8rem; color: #9ca3af;">Simulated Score After 11 Controls:</div>
+                <div style="font-size: 1.6rem; font-weight: bold; color: #10b981;">64.0 / 100 (-26.3 pts)</div>
+                <div style="font-size: 0.85rem; color: #34d399;">New Tier: HIGH</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <h3>Category Breakdown</h3>
+        <table>
+            <tr><th>Category</th><th>Score</th><th>Tier</th></tr>
+            <tr><td>Profile Visibility</td><td><strong>95.0</strong>/100</td><td>CRITICAL</td></tr><tr><td>Personal Information</td><td><strong>76.0</strong>/100</td><td>CRITICAL</td></tr><tr><td>Location Privacy</td><td><strong>96.0</strong>/100</td><td>CRITICAL</td></tr><tr><td>Posts & Content</td><td><strong>95.0</strong>/100</td><td>CRITICAL</td></tr><tr><td>Friends & Followers</td><td><strong>87.5</strong>/100</td><td>CRITICAL</td></tr><tr><td>Tagging & Mentions</td><td><strong>85.0</strong>/100</td><td>CRITICAL</td></tr><tr><td>Authentication & Account Security</td><td><strong>92.0</strong>/100</td><td>CRITICAL</td></tr><tr><td>Third-Party Apps</td><td><strong>95.0</strong>/100</td><td>CRITICAL</td></tr><tr><td>Messaging & Social Engineering</td><td><strong>97.5</strong>/100</td><td>CRITICAL</td></tr><tr><td>Digital Footprint</td><td><strong>84.0</strong>/100</td><td>CRITICAL</td></tr>
+        </table>
+    </div>
+
+    <div class="card">
+        <h3>Top Critical Findings</h3>
+        <div style='margin-bottom: 12px; border-left: 3px solid #ef4444; padding-left: 10px;'><strong>Mobile Phone Number Publicly Visible</strong><br><small style='color: #9ca3af;'>Direct vector for SIM-swapping, SMS phishing (smishing), unauthorized WhatsApp re-registration, and reverse lookups in leaked breaches.</small></div><div style='margin-bottom: 12px; border-left: 3px solid #ef4444; padding-left: 10px;'><strong>Full Birth Date (Day, Month, Year) Exposed</strong><br><small style='color: #9ca3af;'>Full birth dates form a cornerstone of identity theft, credit bureau impersonation, and answering security questions for banking or healthcare accounts.</small></div><div style='margin-bottom: 12px; border-left: 3px solid #ef4444; padding-left: 10px;'><strong>Home Address or Exact Residential Neighborhood Disclosed</strong><br><small style='color: #9ca3af;'>Destroys physical privacy, exposing the user to physical reconnaissance, harassment, and property record correlation.</small></div><div style='margin-bottom: 12px; border-left: 3px solid #ef4444; padding-left: 10px;'><strong>Multi-Factor Authentication (MFA) Disabled</strong><br><small style='color: #9ca3af;'>Single-factor accounts have zero defense against credential stuffing or data breaches leaking password hashes.</small></div><div style='margin-bottom: 12px; border-left: 3px solid #ef4444; padding-left: 10px;'><strong>Real-Time Location Broadcasts Enabled</strong><br><small style='color: #9ca3af;'>Allows real-world physical tracking, reveals exact coordinates in real-time, and confirms absence from your primary residence.</small></div>
+    </div>
+
+    <div class="card">
+        <h3>Prioritized Remediations</h3>
+        <div style='margin-bottom: 12px; border-left: 3px solid #10b981; padding-left: 10px;'><strong>[IMMEDIATE] Remove or strictly hide your mobile phone number from all public profiles.</strong><br><small style='color: #9ca3af;'>Navigate to Account Settings -> Personal Information -> Contact Info -> Set Phone Visibility to 'Only Me' or remove it from public display.</small></div><div style='margin-bottom: 12px; border-left: 3px solid #10b981; padding-left: 10px;'><strong>[IMMEDIATE] Hide your birth year or privatize your full date of birth completely.</strong><br><small style='color: #9ca3af;'>Go to Edit Profile -> Basic Info -> Birthday -> Toggle Birth Year to 'Only Me' or hide the entire date.</small></div><div style='margin-bottom: 12px; border-left: 3px solid #10b981; padding-left: 10px;'><strong>[IMMEDIATE] Remove residential street address, apartment number, or specific neighborhood from your bio.</strong><br><small style='color: #9ca3af;'>Edit Profile -> Places Lived -> Remove specific residential entries or set to general region only.</small></div><div style='margin-bottom: 12px; border-left: 3px solid #10b981; padding-left: 10px;'><strong>[IMMEDIATE] Enable Multi-Factor Authentication (MFA) immediately using a mobile authenticator app.</strong><br><small style='color: #9ca3af;'>Go to Settings -> Security & Login -> Two-Factor Authentication -> Choose 'Authentication App' (e.g. Google Authenticator, Bitwarden, or 1Password) and save backup codes.</small></div><div style='margin-bottom: 12px; border-left: 3px solid #10b981; padding-left: 10px;'><strong>[IMMEDIATE] Disable real-time location sharing and avoid live venue updates.</strong><br><small style='color: #9ca3af;'>Turn off device-level location access for the social media app in Phone Settings -> Privacy -> Location Services. Stop broadcasting live stories.</small></div>
+    </div>
+</body>
+</html>
